@@ -2,7 +2,7 @@ const app = require('./config/koa');
 const config = require('./config/environment');
 const query = require('./util/mysql-async');
 const Store = require('./util/redis-store');
-const draftSocket = require('./util/draft-socketio');
+// const draftSocket = require('./util/draft-socketio');
 const redisMysql = require('./util/redis-mysql');
 const session = require('koa-session2');
 const http = require('http');
@@ -33,7 +33,7 @@ app.use(function (ctx, next) {
 
 app.on('error', (error, ctx) => {
   console.log('something error ' + JSON.stringify(ctx.onerror));
-  ctx.redirect('/500.httml');
+  ctx.redirect('/500.html');
 })
 
 const server = http.createServer(app.callback())
