@@ -7,9 +7,9 @@ const jwt = require('koa-jwt');
 const config = require('./environment');
 
 //admin账号通过配置写入到数据库中
-if(config.isUpdateAdmin){
-  adminAccount.saveAdminAccount();
-}
+// if(config.isUpdateAdmin){
+//   adminAccount.saveAdminAccount();
+// }
 
 const app = new Koa();
 

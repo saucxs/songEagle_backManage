@@ -19,17 +19,17 @@ module.exports = {
         auth_pass: ''
       }
     },
-    root: path.normalize(__dirname + '/..'),
-    appPath: 'src',
-    tempUploads: 'tempUploads',
-    uploads: 'uploads',
-    port: '9000',
-    tokenSecret: 'test',
-    isUpdateAdmin: true,
-    accessControlAllowOrigin: 'http://localhost:3000',
-    admin: 'admin',
-    adminPassword: '123456',
-    socketioPath: '/testsocketiopath',
-    draftPostRedisKey: 'DRAFTPSOTKEY'
-  }
+  },
+  root: path.normalize(__dirname + '/..'),
+  appPath: 'src',
+  tempUploads: 'tempUploads',
+  uploads: 'uploads',
+  port: '9000',
+  tokenSecret: 'test',
+  isUpdateAdmin: true,
+  accessControlAllowOrigin: 'http://localhost:3000',
+  admin: 'admin',
+  adminPassword: '123456',
+  socketioPath: '/testsocketiopath',
+  draftPostRedisKey: 'DRAFTPSOTKEY'
 }
