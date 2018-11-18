@@ -19,7 +19,6 @@
 </template>
 
 <script>
-
 import { mapGetters, mapActions } from 'vuex';
 export default {
   data () {
@@ -69,7 +68,7 @@ export default {
 .login {
   position: relative;
   min-height: 100%;
-  background-color: #324057;
+  background: #00000e url("../assets/image/suningcloud.jpg") no-repeat center 0;
   .login-section {
     position: absolute;
     top: 50%;
@@ -80,7 +79,7 @@ export default {
     font-size: 2.5em;
     color: #fff;
     text-align: center;
-    margin-bottom: 1.5em;
+    margin-bottom: 1em;
   }
   .login-form {
     padding: 2em;
