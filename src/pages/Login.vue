@@ -1,7 +1,7 @@
 <template>
   <section class="login">
     <div class="login-section">
-      <h2>songEagle后台管理系统</h2>
+      <h2>{{systemName}}</h2>
       <div class="login-form">
         <div class="form-group">
           <input type="text" class="username" v-model="userName"  placeholder="用户名">
@@ -10,7 +10,7 @@
           <input type="password" class="passowrd" v-model="password"  @keyup.enter="login" placeholder="密码">
         </div>
         <div class="form-group">
-          <button class="btnLogin" ref="login" @click="login">登陆</button>
+          <button class="btnLogin" ref="login" @click="submit">登陆</button>
         </div>
         <p class="error">{{ errMsg }}</p>
       </div>
@@ -19,8 +19,8 @@
 </template>
 
 <script>
-//import api from '../fetch/api';
 
+import { mapGetters, mapActions } from 'vuex';
 export default {
   data () {
     return {
@@ -29,8 +29,16 @@ export default {
       errMsg: ''
     };
   },
+  computed: {
+    ...mapGetters([
+      'systemName'
+    ])
+  },
   methods: {
-    login: async function () {
+    ...mapActions([
+      "login"
+    ]),
+    submit: async function () {
       if (this.userName === '') {
         this.errMsg = '用户名不能为空';
         return false;
@@ -39,8 +47,11 @@ export default {
         this.errMsg = '密码不能为空';
         return false;
       }
-
-      let res = await api.login(this.userName, this.password);
+      let params = {
+        userName: this.userName,
+        password: this.password
+      }
+      let res = await this.login(params);
       if (res.success === 1) {
         this.errMsg = '';
         localStorage.setItem('DON_BLOG_TOKEN', res.token);
