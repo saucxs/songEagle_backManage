@@ -52,7 +52,7 @@ export default {
 
 <style lang="scss" scoped>
 .header {
-  position: absolute;
+  /*position: absolute;*/
   text-align: left;
   top: 0;
   left: 0;

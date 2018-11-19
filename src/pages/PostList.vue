@@ -1,18 +1,26 @@
 <template>
-  <section class="post-list right-container">
-    <back-menu></back-menu>
-    <back-header></back-header>
-    <post-table :post-list="postList" @delete-post='changePostTotal'></post-table>
-    <pagination :page-size="pageSize"
-                :total="total"
-                :current-page="page"
-                @change-page="changePage">
-    </pagination>
+  <section>
+    <header-top></header-top>
+    <section class="container-box">
+      <!--<section class="post-list right-container">-->
+      <back-menu></back-menu>
+      <div class="right-box">
+        <back-header></back-header>
+        <post-table :post-list="postList" @delete-post='changePostTotal'></post-table>
+        <pagination :page-size="pageSize"
+                    :total="total"
+                    :current-page="page"
+                    @change-page="changePage">
+        </pagination>
+      </div>
+    </section>
   </section>
+
 </template>
 
 <script>
   import { mapGetters, mapActions } from 'vuex';
+  import HeaderTop from '../components/HeaderTop';
 import Menu from '../components/Menu';
 import Header from '../components/Header';
 import PostTable from '../components/PostTable';
@@ -20,6 +28,7 @@ import Pagination from '../components/Pagination';
 
 export default {
   components: {
+    HeaderTop,
     'back-menu': Menu,
     'back-header': Header,
     PostTable,

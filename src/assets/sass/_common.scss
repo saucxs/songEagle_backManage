@@ -14,11 +14,29 @@ body {
   width: 100%;
   max-width: 80em;
 }
-
+.container-box{
+  height: calc(100% - 46px);
+  width: 1366px;
+  margin: auto;
+  display: flex;
+}
+.right-box{
+  height: 100%;
+  width: calc(100% - 180px);
+  margin-left: 10px;
+  overflow: auto;
+}
 .right-container {
   position: relative;
   margin-left: 12em;
   padding: 5em 1em 1em;
+}
+.inline-block{
+  display: inline-block;
+  width: 50%;
+}
+.inline-block:nth-child(2){
+  text-align: right;
 }
 
 a {
@@ -53,7 +71,7 @@ a {
   border: 1px solid #d8dce5;
   border-radius: 0.2em;
   cursor: pointer;
-  background-color: #fff;   
+  background-color: #fff;
   outline: none;
 
   &:hover {
@@ -70,9 +88,9 @@ a {
   border-radius: 0.2em;
   cursor: pointer;
   border: 1px solid $base-color;
-  background-color: $base-color;  
+  background-color: $base-color;
   outline: none;
-  
+
   &:hover {
     opacity: .8;
   }
@@ -83,11 +101,11 @@ a {
   width: 3px;
   height: 6px;
 } /* 这是针对缺省样式 (必须的) */
-::-webkit-scrollbar-track {   
-  background-color:  rgba(230, 230, 230, 0.6);   
+::-webkit-scrollbar-track {
+  background-color:  rgba(230, 230, 230, 0.6);
 } /* 滚动条的滑轨背景颜色 */
-      
-::-webkit-scrollbar-thumb { 
+
+::-webkit-scrollbar-thumb {
   width: 3px;
   background-color: rgba(0, 0, 0, 0.2);
   border-radius: 3px;
@@ -95,7 +113,7 @@ a {
 
 ::-webkit-scrollbar-button {
   background-color: rgba(0, 0, 0, 0.2);
-} /* 滑轨两头的监听按钮颜色 */ 
+} /* 滑轨两头的监听按钮颜色 */
 
 ::-webkit-scrollbar-corner {
   background-color: rgba(0, 0, 0, 0.05);

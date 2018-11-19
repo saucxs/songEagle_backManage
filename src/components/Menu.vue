@@ -29,7 +29,7 @@
 <style lang="scss" scoped>
 @import '../assets/sass/app';
 .menu {
-  position: fixed;
+  /*position: fixed;*/
   top: 0;
   bottom: 0;
   left: 0;
