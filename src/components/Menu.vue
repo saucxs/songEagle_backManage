@@ -1,7 +1,7 @@
 <template>
   <section class="menu">
     <div class="user">
-      <img src="../../static/logo.png" alt="网站logo图片">
+      <img src="../../static/logo.png" alt="程新松">
     </div>
     <ul class="menu-list">
       <li class="menu-item">
@@ -37,11 +37,13 @@
   background: #495060;
   z-index: 9999;
   .user {
-    padding: 3em;
-
+    padding: 1.5em;
+    margin: 1.5em;
+    border-radius: 50%;
+    background: #ccc;
     img {
-      width: 100%;
-      height: 100%;
+      width: 84px;
+      height: 84px;
       transition: all .8s;
       &:hover {
         transform: scale(1.2) rotate(360deg);

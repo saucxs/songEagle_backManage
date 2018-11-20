@@ -3,36 +3,13 @@
     <div class="header-box">
       <div class="inline-block">
         <a class="header-logo">
-          <h1>&nbsp;|&nbsp;{{systemName}}</h1>
+          {{systemName}}
         </a>
       </div>
       <div class="inline-block">
-        <div class="header-user-name">user<i class="el-icon-caret-bottom el-icon--right"></i></div>
+        <div class="header-user-name">user</div>
       </div>
     </div>
-    <!--修改密码-->
-    <el-dialog
-      :title="dialogTitle"
-      :visible.sync="changePawwordVisiable"
-      width="400px"
-      :before-close="handleClose"
-      center>
-      <el-form label-position="right" label-width="80px" :model="changePasswordForm">
-        <el-form-item label="原密码">
-          <el-input maxlength="16" oninput="this.value=this.value.replace(/[^\w]/g,'') " v-model="changePasswordForm.oldPassword"></el-input>
-        </el-form-item>
-        <el-form-item label="新密码">
-          <el-input maxlength="16" oninput="this.value=this.value.replace(/[^\w]/g,'')" v-model="changePasswordForm.newPassword"></el-input>
-        </el-form-item>
-        <el-form-item label="确认密码">
-          <el-input maxlength="16" oninput="this.value=this.value.replace(/[^\w]/g,'')" v-model="changePasswordForm.confirmNewPassword"></el-input>
-        </el-form-item>
-      </el-form>
-      <span slot="footer" class="dialog-footer">
-          <el-button @click="handleClose()">取 消</el-button>
-          <el-button type="primary" :loading="loadingFlag" @click="confirmChangePassword()">确 定</el-button>
-        </span>
-    </el-dialog>
   </header>
 </template>
 
@@ -142,14 +119,18 @@
    .header-box{
     width: 1360px;
     margin: 0 auto;
-    background: #3a79ff;
+    /*background: #3a79ff;*/
     display: flex;
 
      .header-logo{
-      h1:hover{
-        color: #fff;
-      }
+       font-family: PingFangSC-Regular;
+       font-size: 20px;
+       margin: 0;
+       cursor: pointer;
     }
+     .header-logo:hover{
+       color: #fff;
+     }
   }
   .header-user-name {
     cursor: pointer;

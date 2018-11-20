@@ -19,8 +19,8 @@
 </template>
 
 <script>
-  import { mapGetters, mapActions } from 'vuex';
-  import HeaderTop from '../components/HeaderTop';
+import { mapGetters, mapActions } from 'vuex';
+import HeaderTop from '../components/HeaderTop';
 import Menu from '../components/Menu';
 import Header from '../components/Header';
 import PostTable from '../components/PostTable';

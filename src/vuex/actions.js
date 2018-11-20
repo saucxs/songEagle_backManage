@@ -1,5 +1,8 @@
 import Login from "../api/login";
 import Post from "../api/post";
+import Tag from "../api/tag";
+import Laboratory from "../api/laboratory";
+import Category from "../api/category";
 import * as types from "./mutation-types";
 
 // example
@@ -27,6 +30,126 @@ export const getPostList = ({ commit }, params) => {
 // getPostTotal
 export const getPostTotal = ({ commit }, params) => {
   return Post.getPostTotal(params).then(response => {
+    return response;
+  })
+}
+
+// deleteLaboratory
+export const deleteLaboratory = ({ commit }, params) => {
+  return Laboratory.deleteLaboratory(params).then(response => {
+    return response;
+  })
+}
+
+// updateLaboratory
+export const updateLaboratory = ({ commit }, params) => {
+  return Laboratory.updateLaboratory(params).then(response => {
+    return response;
+  })
+}
+
+// getCategories
+export const getCategories = ({ commit }, params) => {
+  return Category.getCategories(params).then(response => {
+    return response;
+  })
+}
+
+// getPostsByCatId
+export const getPostsByCatId = ({ commit }, params) => {
+  return Post.getPostsByCatId(params).then(response => {
+    return response;
+  })
+}
+
+// addNewCategory
+export const addNewCategory = ({ commit }, params) => {
+  return Category.addNewCategory(params).then(response => {
+    return response;
+  })
+}
+
+// updateCategory
+export const updateCategory = ({ commit }, params) => {
+  return Category.updateCategory(params).then(response => {
+    return response;
+  })
+}
+
+// deleteCategory
+export const deleteCategory = ({ commit }, params) => {
+  return Category.deleteCategory(params).then(response => {
+    return response;
+  })
+}
+
+
+// getPostById
+export const getPostById = ({ commit }, params) => {
+  return Post.getPostById(params).then(response => {
+    return response;
+  })
+}
+
+// updatePost
+export const updatePost = ({ commit }, params) => {
+  return Post.updatePost(params).then(response => {
+    return response;
+  })
+}
+
+//addPost
+export const addPost = ({ commit }, params) => {
+  return Post.addPost(params).then(response => {
+    return response;
+  })
+}
+
+//getLaboratories
+export const getLaboratories = ({ commit }, params) => {
+  return Laboratory.getLaboratories(params).then(response => {
+    return response;
+  })
+}
+
+//createNewLaboratory
+export const createNewLaboratory = ({ commit }, params) => {
+  return Laboratory.createNewLaboratory(params).then(response => {
+    return response;
+  })
+}
+
+//getTags
+export const getTags = ({ commit }, params) => {
+  return Tag.getTags(params).then(response => {
+    return response;
+  })
+}
+
+//getPostsByTagId
+export const getPostsByTagId = ({ commit }, params) => {
+  return Post.getPostsByTagId(params).then(response => {
+    return response;
+  })
+}
+
+//addNewTag
+export const addNewTag = ({ commit }, params) => {
+  return Tag.addNewTag(params).then(response => {
+    return response;
+  })
+}
+
+//updateTag
+export const updateTag = ({ commit }, params) => {
+  return Tag.updateTag(params).then(response => {
+    return response;
+  })
+}
+
+//deleteTag
+export const deleteTag = ({ commit }, params) => {
+  return Tag.deleteTag(params).then(response => {
     return response;
   })
 }

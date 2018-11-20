@@ -16,7 +16,7 @@ body {
 }
 .container-box{
   height: calc(100% - 46px);
-  width: 1366px;
+  width: 1360px;
   margin: auto;
   display: flex;
 }
@@ -34,6 +34,7 @@ body {
 .inline-block{
   display: inline-block;
   width: 50%;
+  line-height: 44px;
 }
 .inline-block:nth-child(2){
   text-align: right;
