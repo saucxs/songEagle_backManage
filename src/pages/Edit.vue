@@ -1,5 +1,5 @@
 <template>
-  <section class="edit">
+  <section class="common-section edit">
     <!--<section class="edit right-container">-->
     <header-top></header-top>
     <section class="container-box">
@@ -343,7 +343,7 @@ export default {
   position: relative;
 
   .post-form {
-    margin: 0 -1em 5em;
+    margin: 0 -0.5em 5em;
 
     .no-overflow {
       overflow: visible;

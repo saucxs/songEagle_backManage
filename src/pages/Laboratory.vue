@@ -1,5 +1,5 @@
 <template>
-  <section class="laboratory">
+  <section class="common-section laboratory">
     <!--<section class="laboratory right-container">-->
     <header-top></header-top>
     <section class="container-box">

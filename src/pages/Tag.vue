@@ -1,5 +1,5 @@
 <template>
-  <section class="tag">
+  <section class="common-section tag">
     <!--<section class="tag right-container">-->
     <header-top></header-top>
     <section class="container-box">

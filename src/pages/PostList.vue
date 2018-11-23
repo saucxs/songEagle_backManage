@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section class="common-section post-list">
     <header-top></header-top>
     <section class="container-box">
       <!--<section class="post-list right-container">-->

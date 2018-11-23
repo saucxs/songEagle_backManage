@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section class="common-section home">
     <header-top></header-top>
     <section class="container-box">
       <back-menu></back-menu>

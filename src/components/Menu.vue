@@ -29,13 +29,10 @@
 <style lang="scss" scoped>
 @import '../assets/sass/app';
 .menu {
-  /*position: fixed;*/
-  top: 0;
-  bottom: 0;
-  left: 0;
   width: 12em;
   background: #495060;
   z-index: 9999;
+  height: 100%;
   .user {
     padding: 1.5em;
     margin: 1.5em;

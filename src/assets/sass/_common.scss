@@ -7,6 +7,9 @@ body {
   color: #666;
   // background: rgba(238, 238, 238, 0.6);
 }
+.common-section{
+  height: 100%;
+}
 
 .container {
   position: relative;
@@ -22,9 +25,9 @@ body {
 }
 .right-box{
   height: 100%;
-  width: calc(100% - 180px);
-  margin-left: 10px;
+  width: calc(100% - 12em);
   overflow: auto;
+  padding-left: 0.5em;
 }
 .right-container {
   position: relative;
