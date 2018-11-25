@@ -33,7 +33,7 @@ export default {
       }).then(async () => {
         let res = await this.signOut();
         if (res.success === 1) {
-          localStorage.removeItem('DON_BLOG_TOKEN');
+          localStorage.removeItem('SONG_EAGLE_TOKEN');
           this.$router.push({ path: '/login' });
         } else {
           this.$message.showMessage({

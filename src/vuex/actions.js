@@ -98,9 +98,23 @@ export const updatePost = ({ commit }, params) => {
   })
 }
 
+// publishPost
+export const publishPost = ({ commit }, params) => {
+  return Post.publishPost(params).then(response => {
+    return response;
+  })
+}
+
 //addPost
 export const addPost = ({ commit }, params) => {
   return Post.addPost(params).then(response => {
+    return response;
+  })
+}
+
+//deletePost
+export const deletePost = ({ commit }, params) => {
+  return Post.deletePost(params).then(response => {
     return response;
   })
 }

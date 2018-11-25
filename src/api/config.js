@@ -7,7 +7,7 @@ axios.defaults.timeout = 20000;
 // Add a request interceptor
 axios.interceptors.request.use(
   config => {
-    const token = localStorage.getItem('DON_BLOG_TOKEN');
+    const token = localStorage.getItem('SONG_EAGLE_TOKEN');
     if (token) {
       // Bearer是JWT的认证头部信息
       config.headers.common['Authorization'] = 'Bearer ' + token;

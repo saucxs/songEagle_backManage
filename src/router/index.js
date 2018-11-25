@@ -12,7 +12,7 @@ import Edit from '@/pages/Edit';
 Vue.use(Router)
 
 const router = new Router({
-  mode: 'history',
+  // mode: 'history',
   routes: [
     {
       path: '/',
@@ -146,7 +146,7 @@ const router = new Router({
 
 router.beforeEach((to, from, next) => {
   if (to.meta.requireAuth) {
-    const token = localStorage.getItem('DON_BLOG_TOKEN');
+    const token = localStorage.getItem('SONG_EAGLE_TOKEN');
     if (token && token !== 'null') {
       next();
     } else {

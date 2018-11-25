@@ -6,8 +6,9 @@
             <th>#</th>
             <th>标题</th>
             <th>分类</th>
-            <th>创建时间</th>
             <th>状态</th>
+            <th>创建时间</th>
+            <th>更新时间</th>
             <th>操作</th>
           </tr>
         </thead>
@@ -17,8 +18,9 @@
               <td>{{ index + 1 }}</td>
               <td>{{ post.title }}</td>
               <td>{{ post.categoryName }}</td>
-              <td>{{ post.createTime | formatTime }}</td>
               <td>{{ post.status | setStatus }}</td>
+              <td>{{ post.createTime | formatTime }}</td>
+              <td>{{ post.updateTime | formatTime }}</td>
               <td>
                 <router-link :to="`/edit/${post.id}`" class="no-underline">
                   <button class="btn-default btn-edit">编辑</button>

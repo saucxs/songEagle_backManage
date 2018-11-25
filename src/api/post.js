@@ -22,8 +22,8 @@ export default {
   addPost (params) {
     return async(`${baseUrl}/addPost`, params, 'post');
   },
-  updatePost (id, params) {
-    return async(`${baseUrl}/updatePost/${id}`, params, 'post');
+  updatePost (params) {
+    return async(`${baseUrl}/updatePost/${params.id}`, params.newPost, 'post');
   },
   offlinePost (id) {
     return async(`${baseUrl}/offlinePost/${id}`, {}, 'put');

@@ -230,8 +230,12 @@ export default {
       let newPost = Object.assign({}, this.post);
       newPost.tags = this.tags;
       let res = null;
+      let params = {
+        id: this.$route.params.id,
+        newPost: newPost
+      }
       if (this.$route.params.id) {
-        res = await this.updatePost(this.$route.params.id, newPost);
+        res = await this.updatePost(params);
       } else {
         res = await this.addPost(newPost);
       }
@@ -253,8 +257,13 @@ export default {
       this.post.status = 'DRAFT';
       let newPost = this.createSavePost();
       let res = null;
+      console.log(this.$route.params.id, newPost,'2222222222222222222222222222');
+      let params = {
+        id: this.$route.params.id,
+        newPost: newPost
+      }
       if (this.$route.params.id) {
-        res = await this.updatePost(this.$route.params.id, newPost);
+        res = await this.updatePost(params);
       } else {
         res = await this.addPost(newPost);
       }
@@ -298,7 +307,9 @@ export default {
         content: '请填写分类名称',
         isShowInput: true
       }).then(async (val) => {
+        debugger;
         let res = await this.addNewCategory(val);
+        console.log(res, '2222222222222222222222222222222222222222222222222222222222222222')
         if (res.success === 1) {
           this.categories.push({
             id: res.newId,

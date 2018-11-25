@@ -87,7 +87,8 @@ exports.updatePost = async(ctx) => {
         content: postData.content,
         categoryId: postData.categoryId,
         status: postData.status,
-        poster: postData.poster
+        poster: postData.poster,
+        updateTime: moment().format('YYYY-MM-DD HH:mm:ss')
       };
   try {
     let result = await ctx.execSql('UPDATE post SET ? WHERE id = ?', [newPost, id]);

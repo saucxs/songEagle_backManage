@@ -53,7 +53,7 @@ export default {
       let res = await this.login(params);
       if (res.success === 1) {
         this.errMsg = '';
-        localStorage.setItem('DON_BLOG_TOKEN', res.token);
+        localStorage.setItem('SONG_EAGLE_TOKEN', res.token);
         this.$router.push({ path: '/postlist' });
       } else {
         this.errMsg = res.message;
