@@ -52,7 +52,6 @@ export default {
 
 <style lang="scss" scoped>
 .header {
-  /*position: absolute;*/
   text-align: left;
   top: 0;
   left: 0;
@@ -60,8 +59,6 @@ export default {
   height: 4em;
   line-height: 4em;
   padding-left: 1em;
-  background: #eff2f7;
-
   .no-link {
     color: #97a8be;
     cursor: text;

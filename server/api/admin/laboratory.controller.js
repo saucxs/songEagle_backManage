@@ -21,7 +21,7 @@ exports.getLaboratories = async(ctx) => {
 
 exports.createNewLaboratory = async(ctx) => {
   let result;
-  try {    
+  try {
     result = await helper.uploadFile(ctx);
     let fields = result.fields;
     let laboratory = {
@@ -56,7 +56,7 @@ exports.createNewLaboratory = async(ctx) => {
 
 exports.updateLaboratory = async(ctx) => {
   let result;
-  try {    
+  try {
     result = await helper.uploadFile(ctx);
     let fields = result.fields;
     let laboratory = {
@@ -82,8 +82,8 @@ exports.updateLaboratory = async(ctx) => {
 }
 
 exports.deleteLaboratory = async(ctx) => {
-  let id = ctx.req.params.id || 0;
-  try {    
+  let id = ctx.params.id || 0;
+  try {
     let result = await ctx.execSql('DELETE FROM laboratory WHERE id = ?', id);
     ctx.body = {
       success: 1

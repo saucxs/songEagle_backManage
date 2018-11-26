@@ -1,8 +1,13 @@
 <template>
   <section class="login">
+    <header class="login-header">
+      <div class="box-wrapper">
+        <h1>{{systemName}}</h1>
+      </div>
+    </header>
     <div class="login-section">
-      <h2>{{systemName}}</h2>
       <div class="login-form">
+        <h2>{{systemName}}</h2>
         <div class="form-group">
           <input type="text" class="username" v-model="userName"  placeholder="用户名">
         </div>
@@ -68,12 +73,35 @@ export default {
 .login {
   position: relative;
   min-height: 100%;
-  background: #00000e url("../assets/image/suningcloud.jpg") no-repeat center 0;
+  .login-header {
+    min-width: 1200px;
+    background: #efefef;
+    .box-wrapper{
+      width: 1190px;
+      height: 90px;
+      line-height: 90px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      h1{
+        list-style-type: none;
+        font-family: PingFangSC-Regular;
+        color: #5579ee;
+        font-size: 26px;
+        margin: 0;
+        letter-spacing: 6px;
+      }
+    }
+  }
   .login-section {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -60%);
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    min-width: 1200px;
+    height: 600px;
+    background: #00000e url("../assets/image/bg.jpg") no-repeat center 0;
   }
   h2 {
     font-size: 2.5em;
@@ -82,9 +110,17 @@ export default {
     margin-bottom: 1em;
   }
   .login-form {
-    padding: 2em;
-    background-color: #fff;
+    width: 36em;
+    padding: 3em;
+    z-index: 101;
+    background: rgba(77, 77, 77, 0.6);
+    border: 1px solid rgba(77, 77, 77, 0.6);
     border-radius: 0.2em;
+    transform: translateX(-50%);
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+
   }
   .form-group {
     margin-bottom: 1.5em;
