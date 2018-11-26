@@ -35,7 +35,6 @@ export default {
     return async(`${baseUrl}/deletePost/${id}`, {}, 'delete');
   },
   getPostsByCatId (params) {
-    console.log(params,'111111111111111111111111111111111111111111111111111111')
     return async(`${baseUrl}/getPostsByCatId/${params.id}`, {
       page: params.page,
       pageNum: params.pageSize

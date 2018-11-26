@@ -117,7 +117,7 @@ exports.getPostList = async(ctx) => {
   let page = ctx.query.page || 1,
       pageNum = ctx.query.pageNum || 10;
   let pageIndex = (page - 1) * pageNum < 0 ? 0 : (page - 1) * pageNum;
-  let sql = ` SELECT post.id, post.title, post.createTime, post.status, post.categoryId, 
+  let sql = ` SELECT post.id, post.title, post.createTime, post.updateTime, post.viewTotal, post.status, post.categoryId, 
                 category.name AS categoryName FROM post 
                 LEFT JOIN category ON post.categoryId = category.id 
                 ORDER BY post.createTime DESC LIMIT ${pageIndex}, ${pageNum}`;

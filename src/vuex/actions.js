@@ -119,6 +119,13 @@ export const deletePost = ({ commit }, params) => {
   })
 }
 
+//offlinePost
+export const offlinePost = ({ commit }, params) => {
+  return Post.offlinePost(params).then(response => {
+    return response;
+  })
+}
+
 //getLaboratories
 export const getLaboratories = ({ commit }, params) => {
   return Laboratory.getLaboratories(params).then(response => {
@@ -167,3 +174,19 @@ export const deleteTag = ({ commit }, params) => {
     return response;
   })
 }
+
+//addNewTagWhenPost
+export const addNewTagWhenPost = ({ commit }, params) => {
+  return Tag.addNewTagWhenPost(params).then(response => {
+    return response;
+  })
+}
+
+//searchTagByName
+export const searchTagByName = ({ commit }, params) => {
+  return Tag.searchTagByName(params).then(response => {
+    return response;
+  })
+}
+
+

@@ -18,13 +18,13 @@ exports.getCategories = async(ctx) => {
   }
 }
 
-exports.getPostsByCatId = async(ctx) => {  
+exports.getPostsByCatId = async(ctx) => {
   let id = ctx.params.id || 0,
       page = ctx.query.page || 1,
       pageNum = ctx.query.pageNum || 10,
       pageIndex = (page - 1) * pageNum < 0 ? 0 : (page - 1) * pageNum,
       fliter = id == 0 ? '' : ` WHERE post.categoryId = ${id} `,
-      sql = ` SELECT post.id, post.title, post.createTime, post.status, post.categoryId, 
+      sql = ` SELECT post.id, post.title, post.createTime, post.updateTime, post.viewTotal, post.status, post.categoryId, 
               category.name AS categoryName FROM post LEFT JOIN category 
               ON post.categoryId = category.id ${fliter}
               ORDER BY post.createTime DESC LIMIT ${pageIndex}, ${pageNum}`;
@@ -47,7 +47,7 @@ exports.getPostsByCatId = async(ctx) => {
 
 exports.addNewCategory = async(ctx) => {
   let name = ctx.params.name || 0;
-  try {   
+  try {
     let existName = await ctx.execSql(`SELECT * FROM category WHERE name = ?`, name);
     if (existName.length > 0) {
       ctx.body = {
@@ -75,7 +75,7 @@ exports.addNewCategory = async(ctx) => {
 exports.updateCategory = async(ctx) => {
   let id = ctx.params.id || 0,
       name = ctx.query.name || '';
-  try {    
+  try {
     let existName = await ctx.execSql(`SELECT * FROM category WHERE name = ? AND id <> ?`, [name, id]);
     if (existName.length > 0) {
       ctx.body = {

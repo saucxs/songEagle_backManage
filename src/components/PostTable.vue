@@ -9,6 +9,7 @@
             <th>状态</th>
             <th>创建时间</th>
             <th>更新时间</th>
+            <th>阅读数</th>
             <th>操作</th>
           </tr>
         </thead>
@@ -21,6 +22,7 @@
               <td>{{ post.status | setStatus }}</td>
               <td>{{ post.createTime | formatTime }}</td>
               <td>{{ post.updateTime | formatTime }}</td>
+              <td>{{ post.viewTotal }}</td>
               <td>
                 <router-link :to="`/edit/${post.id}`" class="no-underline">
                   <button class="btn-default btn-edit">编辑</button>
@@ -47,7 +49,11 @@ export default {
   },
   filters: {
     formatTime: function (createTime) {
-      return moment(createTime).format('YYYY-MM-DD HH:mm:ss');
+      if(createTime){
+        return moment(createTime).format('YYYY-MM-DD HH:mm:ss');
+      }else{
+        return '--'
+      }
     },
     setStatus: function (status) {
       let showStatus = '';

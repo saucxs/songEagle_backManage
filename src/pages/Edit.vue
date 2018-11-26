@@ -123,7 +123,7 @@ export default {
               content: '最多添加5个标签'
             });
           } else {
-            let res = await api.addNewTagWhenPost(tagTemp);
+            let res = await this.addNewTagWhenPost(tagTemp);
             if (res.success === 1) {
               this.tags.push({
                 id: res.newId,
@@ -135,7 +135,7 @@ export default {
         }
       } else if (this.newTag) {
         this.$refs.searchTagList.style.left = (this.$refs.tagList.offsetWidth + 7) + 'px';
-        let res = await api.searchTagByName(this.newTag);
+        let res = await this.searchTagByName(this.newTag);
         if (res.success === 1) {
           this.searchTags = res.tags;
         }
@@ -189,7 +189,9 @@ export default {
       "getCategories",
       "updatePost",
       "addPost",
-      "addNewCategory"
+      "addNewCategory",
+      "addNewTagWhenPost",
+      "searchTagByName"
     ]),
     filterTag: function (tag) {
       return tag.replace(this.newTag, `<strong>${this.newTag}</strong>`);

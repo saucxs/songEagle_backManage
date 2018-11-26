@@ -22,13 +22,13 @@ exports.getTags = async(ctx) => {
   }
 }
 
-exports.getPostsByTagId = async(ctx) => {  
+exports.getPostsByTagId = async(ctx) => {
   let id = ctx.params.id || 0,
       page = ctx.query.page || 1,
       pageNum = ctx.query.pageNum || 10,
       pageIndex = (page - 1) * pageNum < 0 ? 0 : (page - 1) * pageNum,
       fliter = id == 0 ? '' : ` WHERE post_tag.tagId = ${id} `,
-      sql = ` SELECT post.id, post.title, post.createTime, post.status, 
+      sql = ` SELECT post.id, post.title, post.createTime, post.updateTime, post.viewTotal, post.status, 
               post.categoryId, category.name AS categoryName 
               FROM post LEFT JOIN category ON post.categoryId = category.id 
               LEFT JOIN post_tag ON post.id = post_tag.postId ${fliter}
@@ -55,7 +55,7 @@ exports.getPostsByTagId = async(ctx) => {
 /**
  * 新增/修改文章时添加新标签
  * 如果已存在，则直接返回标签的id
- */ 
+ */
 exports.addNewTagWhenPost = async(ctx) => {
   let name = ctx.params.name || 0;
   try {

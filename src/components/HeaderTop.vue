@@ -7,7 +7,12 @@
         </a>
       </div>
       <div class="inline-block">
-        <div class="header-user-name">user</div>
+        <span class="sign-out" title="退出登录" @click="signOut">
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-signout"></use>
+          </svg>
+        </span>
+        <!--<div class="header-user-name">user</div>-->
       </div>
     </div>
   </header>
@@ -114,14 +119,11 @@
     height: 46px;
     line-height: 46px;
     font-weight: 700;
-    /*box-shadow: 0 2px 10px 0 rgb(0, 0, 0, 0.4);*/
-
    .header-box{
     width: 1360px;
     margin: 0 auto;
     /*background: #3a79ff;*/
     display: flex;
-
      .header-logo{
        font-family: PingFangSC-Regular;
        font-size: 20px;
@@ -135,6 +137,18 @@
   .header-user-name {
     cursor: pointer;
     color: #fff;
+  }
+  .sign-out {
+    position: absolute;
+    top: 0;
+    right: 2em;
+    cursor: pointer;
+    .icon {
+      margin-top: 0.5em;
+      width: 2em;
+      height: 2em;
+      color: #fa5555;
+    }
   }
 
   }

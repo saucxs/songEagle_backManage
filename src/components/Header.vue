@@ -7,11 +7,6 @@
       <span class="no-link" :key="index" v-else>{{ item.name }}</span>
       <span class="separator" :key="index" v-show="index !== $route.meta.paths.length - 1">/</span>
     </template>
-    <span class="sign-out" title="退出登录" @click="signOut">
-      <svg class="icon" aria-hidden="true">
-        <use xlink:href="#icon-signout"></use>
-      </svg>
-    </span>
   </section>
 </template>
 
@@ -65,19 +60,6 @@ export default {
   }
   .separator {
     margin: 0 0.5em 0 0.3em;
-  }
-  .sign-out {
-    position: absolute;
-    top: 0;
-    right: 2em;
-    cursor: pointer;
-
-    .icon {
-      margin-top: 1em;
-      width: 2em;
-      height: 2em;
-      color: #fa5555;
-    }
   }
 }
 </style>
