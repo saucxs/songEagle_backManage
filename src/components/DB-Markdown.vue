@@ -27,7 +27,7 @@ export default {
       this.markdownContent = this.content;
     },
     markdownContent: function () {
-      this.markdownHtml = marked(this.markdownContent, { sanitize: true });
+      this.markdownHtml = marked(this.markdownContent, { sanitize: true,xhtml: true });
       this.$emit('sync-content', this.markdownContent);
     }
   },
@@ -51,7 +51,7 @@ export default {
       padding: 0.8em 1.2em;
       width: 100%;
       min-height: 30em;
-      max-width: 100%;      
+      max-width: 100%;
       line-height: 1.6;
       border: none;
       outline: none;

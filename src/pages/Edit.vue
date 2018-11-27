@@ -149,6 +149,7 @@ export default {
           this.isFirtUpdatePostChange = false;
         } else {
           let newPost = this.createSavePost();
+          console.log(newPost,'111111111111111111111111111111')
           this.$socket.emit('saveDraftPost', newPost);
         }
       },
@@ -159,6 +160,7 @@ export default {
         this.isFirtUpdateTagsChange = false;
       } else {
         let newPost = this.createSavePost();
+        console.log(newPost,'2222222222222222222222222222222222222222222222')
         this.$socket.emit('saveDraftPost', newPost);
       }
     }
@@ -169,6 +171,7 @@ export default {
     },
     getDraftPost: function (val) {
       if (val) {
+        console.log(val, '0000000000000000')
         // let serverPost = JSON.parse(val);
         Object.assign(this.post, val);
         this.tags = val.tags || [];
