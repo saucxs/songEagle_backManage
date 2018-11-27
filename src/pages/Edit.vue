@@ -8,7 +8,7 @@
         <back-header></back-header>
         <form class="post-form">
           <div class="form-group col-12">
-            <input type="text" class="title" v-model="post.title" placeholder="文章标题">
+            <input type="text" class="title" maxlength="90" v-model="post.title" placeholder="文章标题">
           </div>
           <div class="form-group col-12 no-overflow">
             <db-select class="category"

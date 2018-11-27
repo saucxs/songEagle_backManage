@@ -17,7 +17,7 @@
           <template v-for="(post, index) in postList">
             <tr :key="post.id">
               <td>{{ index + 1 }}</td>
-              <td>{{ post.title }}</td>
+              <td :title="post.title">{{ post.title | dotdotFormat }}</td>
               <td>{{ post.categoryName }}</td>
               <td>{{ post.status | setStatus }}</td>
               <td>{{ post.createTime | formatTime }}</td>
@@ -42,6 +42,7 @@
 <script>
 import moment from 'moment';
 import { mapGetters, mapActions } from 'vuex';
+import { dotFormat } from '../util/common';
 
 export default {
   props: {
@@ -71,6 +72,9 @@ export default {
           break;
       }
       return showStatus;
+    },
+    dotdotFormat: function (val) {
+      return dotFormat(val, 42)
     }
   },
   methods: {
