@@ -1,7 +1,7 @@
 <template>
   <section class="menu">
     <div class="user">
-      <!--<img src="../../static/logo.png" alt="程新松">-->
+      <img src="../../static/logo.png" alt="程新松">
     </div>
     <ul class="menu-list">
       <li class="menu-item">
