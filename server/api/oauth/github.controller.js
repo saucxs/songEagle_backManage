@@ -12,6 +12,7 @@ exports.githubOAuth = async(ctx) => {
     client_secret: config.oAuth.github.client_secret,
     code: code
   };
+  console.log(params, 'params======================================================================')
   await fetch(path, {
     method: 'POST',
     headers: {
