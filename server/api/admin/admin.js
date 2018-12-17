@@ -4,6 +4,7 @@ const post = require('./post.controller');
 const category = require('./category.controller');
 const tag = require('./tag.controller');
 const laboratory = require('./laboratory.controller');
+const system = require('./system.controller');
 
 //登入和登出
 router.post('/login', admin.login);
@@ -42,7 +43,7 @@ router.post('/createNewLaboratory', laboratory.createNewLaboratory);
 router.post('/updateLaboratory', laboratory.updateLaboratory);
 router.delete('/deleteLaboratory/:id', laboratory.deleteLaboratory);
 
-//footer-config配置
-// router.get('/getFooterLink', footer.getLinks);
+//system-config配置
+router.get('/getSystem', system.getSystem);
 
 module.exports = router;

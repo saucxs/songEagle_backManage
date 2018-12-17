@@ -12,7 +12,11 @@ import Message from './components/Message/index';
 Vue.use(MessageBox);
 Vue.use(Message);
 
-Vue.use(VueSocketio, socketio('http://localhost:9000', {
+// Vue.use(VueSocketio, socketio('http://localhost:9000', {
+//   path: '/testsocketiopath'
+// }));
+
+Vue.use(VueSocketio, socketio('http://admin.chengxinsong.cn', {
   path: '/testsocketiopath'
 }));
 

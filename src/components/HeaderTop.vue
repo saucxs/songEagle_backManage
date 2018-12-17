@@ -122,7 +122,7 @@
    .header-box{
     width: 1360px;
     margin: 0 auto;
-    /*background: #3a79ff;*/
+    background: #3a79ff;
     display: flex;
      .header-logo{
        font-family: PingFangSC-Regular;
@@ -139,9 +139,6 @@
     color: #fff;
   }
   .sign-out {
-    position: absolute;
-    top: 0;
-    right: 2em;
     cursor: pointer;
     .icon {
       margin-top: 0.5em;
