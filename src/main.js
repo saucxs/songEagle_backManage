@@ -12,13 +12,13 @@ import Message from './components/Message/index';
 Vue.use(MessageBox);
 Vue.use(Message);
 
-// Vue.use(VueSocketio, socketio('http://localhost:9000', {
-//   path: '/testsocketiopath'
-// }));
-
-Vue.use(VueSocketio, socketio('http://admin.chengxinsong.cn', {
+Vue.use(VueSocketio, socketio('http://localhost:9000', {
   path: '/testsocketiopath'
 }));
+
+// Vue.use(VueSocketio, socketio('http://admin.chengxinsong.cn', {
+//   path: '/testsocketiopath'
+// }));
 
 // 引入vuex
 import Vuex from 'vuex'

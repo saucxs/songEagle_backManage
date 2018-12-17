@@ -18,28 +18,7 @@ export default {
     console.log(this.$route.meta.paths, '$route.meta.paths')
   },
   methods: {
-    ...mapActions([
-      "signOut"
-    ]),
-    signOutAction: function () {
-      this.$msgBox.showMsgBox({
-        title: '退出登录',
-        content: '确认退出系统？'
-      }).then(async () => {
-        let res = await this.signOut();
-        if (res.success === 1) {
-          localStorage.removeItem('SONG_EAGLE_TOKEN');
-          this.$router.push({ path: '/login' });
-        } else {
-          this.$message.showMessage({
-            type: 'error',
-            content: res.message
-          });
-        }
-      }).catch(() => {
-        return false;
-      });
-    }
+
   }
 };
 </script>

@@ -20,6 +20,13 @@ export const login = ({ commit }, params) => {
   })
 }
 
+// signOut
+export const signOut = ({ commit }, params) => {
+  return Login.signOut(params).then(response => {
+    return response;
+  })
+}
+
 // getPostList
 export const getPostList = ({ commit }, params) => {
   return Post.getPostList(params).then(response => {
