@@ -5,6 +5,8 @@ songEagle-backManage是基于Vue.js + Node.js + Koa.js + MySQL + Redis + WebSock
 
 后续会更改，暂时使用
 
+现在线上地址为：http://admin.chengxinsong.cn
+
 暂时不能给出账号玩，但是代码是可以用来学习的
 
 支持：
