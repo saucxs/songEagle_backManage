@@ -359,7 +359,7 @@ export default {
   position: relative;
 
   .post-form {
-    margin: 0 -0.5em 5em;
+    margin: 0 0.5em 0em;
 
     .no-overflow {
       overflow: visible;
@@ -424,15 +424,10 @@ export default {
   }
 
   .btn-group {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: #fff;
+    text-align: right;
     z-index: 999;
-    padding: 1em 0;
+    margin: 1em 0;
     button {
-      float: right;
       margin-right: 1em;
     }
   }

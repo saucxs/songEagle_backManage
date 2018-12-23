@@ -6,7 +6,7 @@ exports.getSystem = async(ctx) => {
     ctx.body = {
       success: 1,
       message: '',
-      content: results.length > 0 ? results : []
+      content: results
     };
   } catch (error) {
     console.log(error);

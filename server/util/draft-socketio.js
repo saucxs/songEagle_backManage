@@ -6,7 +6,6 @@ const redisMysql = require('./redis-mysql');
 const draftPostRedisKey = config.draftPostRedisKey;
 
 exports.initSocket = function (server) {
-  console.log('init websocket');
   //socket.io
   let socketHandle = SocketIO(server, {
     serveClient: true,
