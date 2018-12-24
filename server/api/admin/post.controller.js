@@ -49,6 +49,11 @@ exports.addPost = async(ctx) => {
       };
   try {
     let insert = await ctx.execSql('INSERT INTO post SET ?', newPost);
+    /*获取文章url*/
+    let status = 'PUBLISHED'
+    let postUrl = await ctx.execSql(`select * from post where post.status = ${status}`)
+    console.log(postUrl, 'posturl11111111111111111111111111111111111')
+
     if (insert.affectedRows > 0) {
       let id = insert.insertId;
       if(tags.length > 0) {
