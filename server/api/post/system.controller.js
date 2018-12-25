@@ -1,14 +1,19 @@
 exports.getSystem = async(ctx) => {
-  console.log('-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-')
-  let sql = ` SELECT * FROM system `
+  let systemConfigSql = ` SELECT * FROM system `;
   try {
-    let results = await ctx.execSql(sql);
-    console.log(results, '=======================================')
-    ctx.body = {
-      success: 1,
-      message: '',
-      content: results
-    };
+    let systemConfig = await ctx.execSql(systemConfigSql);
+    let bottomLinkSql = ` SELECT * FROM bottom_link where system_id = ${systemConfig[0].id}`
+    let bottomLink = await ctx.execSql(bottomLinkSql);
+    if(systemConfig.length>0){
+      ctx.body = {
+        success: 1,
+        message: '',
+        content: {
+          systemConfig: systemConfig[0],
+          bottomLink: bottomLink
+        }
+      };
+    }
   } catch (error) {
     console.log(error);
     ctx.body = {
