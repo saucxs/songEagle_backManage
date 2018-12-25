@@ -1,4 +1,5 @@
 exports.getSystem = async(ctx) => {
+  console.log('-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-')
   let sql = ` SELECT * FROM system `
   try {
     let results = await ctx.execSql(sql);
