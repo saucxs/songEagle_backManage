@@ -314,7 +314,6 @@ export default {
       }).then(async (val) => {
         debugger;
         let res = await this.addNewCategory(val);
-        console.log(res, '2222222222222222222222222222222222222222222222222222222222222222')
         if (res.success === 1) {
           this.categories.push({
             id: res.newId,
