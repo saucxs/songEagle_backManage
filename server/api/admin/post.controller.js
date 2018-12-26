@@ -83,6 +83,7 @@ exports.addPost = async(ctx) => {
   }
 }
 
+/*发布文章*/
 exports.updatePost = async(ctx) => {
   let id = ctx.params.id || 0,
       postData = ctx.request.body,
@@ -96,6 +97,12 @@ exports.updatePost = async(ctx) => {
         updateTime: moment().format('YYYY-MM-DD HH:mm:ss')
       };
   try {
+    /*获取文章url*/
+    let status = 'PUBLISHED'
+    let postUrl = await ctx.execSql(`select * from post where post.status = ${status}`)
+    console.log(postUrl, 'posturl11111111111111111111111111111111111')
+
+
     let result = await ctx.execSql('UPDATE post SET ? WHERE id = ?', [newPost, id]);
     let delResult = await ctx.execSql('DELETE FROM post_tag WHERE postId = ?', id);
     if(tags.length > 0) {
@@ -178,6 +185,7 @@ exports.offlinePost = async(ctx) => {
   }
 }
 
+/*列表发布*/
 exports.publishPost = async(ctx) => {
   let id = ctx.params.id || 0;
   try {
@@ -186,6 +194,14 @@ exports.publishPost = async(ctx) => {
       success: 1,
       message: ''
     };
+    /*获取文章url*/
+    let postUrl = await ctx.execSql(`select post.id from post where status = 'PUBLISHED'`)
+    let postUrl = await ctx.execSql(`select post.id from post where status = 'PUBLISHED'`)
+    console.log(postUrl, 'posturl11111111111111111111111111111111111')
+    let baseUrl = ''
+
+
+
   } catch (error) {
     console.log(error);
     ctx.body = {
