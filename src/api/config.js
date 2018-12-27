@@ -30,7 +30,6 @@ axios.interceptors.response.use(
 );
 
 export default async (url = '', params = {}, method = 'get', isUpload = false) => {
-  console.log(url, params, method,'111111111111111111111')
   method = method.toLowerCase();
   if (method === 'get') {
     let paramArr = [];

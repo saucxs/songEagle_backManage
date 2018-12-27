@@ -22,12 +22,14 @@ body {
   width: 1360px;
   margin: auto;
   display: flex;
+  background: #eee;
 }
 .right-box{
   height: 100%;
   width: calc(100% - 12em);
   overflow: auto;
   padding-left: 0.5em;
+  padding-right: 1em;
 }
 .right-container {
   position: relative;

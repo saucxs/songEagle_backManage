@@ -147,8 +147,6 @@ exports.updatePost = async(ctx) => {
         updateTime: moment().format('YYYY-MM-DD HH:mm:ss')
       };
   try {
-    let status = 'PUBLISHED'
-    let postUrl = await ctx.execSql(`select * from post where post.status = ${status}`)
     let result = await ctx.execSql('UPDATE post SET ? WHERE id = ?', [newPost, id]);
     let delResult = await ctx.execSql('DELETE FROM post_tag WHERE postId = ?', id);
     if(tags.length > 0) {

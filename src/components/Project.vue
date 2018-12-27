@@ -176,6 +176,7 @@ export default {
   position: relative;
   overflow: hidden;
   margin: 2em auto 4em;
+  min-height: 18em;
 
   .part-one {
     position: relative;

@@ -22,6 +22,9 @@
       <li class="menu-item">
         <router-link to="/laboratory" exact class="no-underline">实验室</router-link>
       </li>
+      <li class="menu-item">
+        <router-link to="/system" exact class="no-underline">系统配置</router-link>
+      </li>
     </ul>
   </section>
 </template>

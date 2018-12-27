@@ -3,6 +3,7 @@ import Post from "../api/post";
 import Tag from "../api/tag";
 import Laboratory from "../api/laboratory";
 import Category from "../api/category";
+import System from "../api/system";
 import * as types from "./mutation-types";
 
 // example
@@ -196,4 +197,10 @@ export const searchTagByName = ({ commit }, params) => {
   })
 }
 
+//getSystemData
+export const getSystem = ({ commit }, params) => {
+  return System.getSystem(params).then(response => {
+    return response;
+  })
+}
 

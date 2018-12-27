@@ -9,6 +9,8 @@ import Laboratory from '@/pages/Laboratory';
 import Tag from '@/pages/Tag';
 import Edit from '@/pages/Edit';
 
+import System from '@/pages/System';
+
 Vue.use(Router)
 
 const router = new Router({
@@ -135,6 +137,24 @@ const router = new Router({
           },
           {
             name: '实验室',
+            link: ''
+          }
+        ],
+        requireAuth: true
+      }
+    },
+    {
+      path: '/system',
+      name: 'System',
+      component: System,
+      meta: {
+        paths: [
+          {
+            name: '首页',
+            link: '/'
+          },
+          {
+            name: '系统配置',
             link: ''
           }
         ],

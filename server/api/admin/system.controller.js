@@ -6,7 +6,7 @@ exports.getSystem = async(ctx) => {
     ctx.body = {
       success: 1,
       message: '',
-      content: results
+      data: results[0]
     };
   } catch (error) {
     console.log(error);
