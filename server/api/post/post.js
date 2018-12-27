@@ -13,6 +13,7 @@ router.get('/keyword/:keyword', post.getPostsByKeyword);
 router.get('/getLaboratory', post.getLaboratory);
 //system-config配置
 router.get('/getSystem', system.getSystem);
+router.get('/getBottomLink', system.getBottomLink);
 
 router.post('/addComment', comment.addComment);
 router.get('/getCommentsByPostId/:postId', comment.getCommentsByPostId);

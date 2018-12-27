@@ -1,3 +1,4 @@
+const fetch = require('node-fetch');
 const moment = require('moment');
 
 exports.getPostById = async(ctx) => {
@@ -35,6 +36,7 @@ exports.getPostById = async(ctx) => {
   }
 }
 
+/*新增-发布*/
 exports.addPost = async(ctx) => {
   let postData = ctx.request.body,
       tags = postData.tags,
@@ -49,11 +51,6 @@ exports.addPost = async(ctx) => {
       };
   try {
     let insert = await ctx.execSql('INSERT INTO post SET ?', newPost);
-    /*获取文章url*/
-    let status = 'PUBLISHED'
-    let postUrl = await ctx.execSql(`select * from post where post.status = ${status}`)
-    console.log(postUrl, 'posturl11111111111111111111111111111111111')
-
     if (insert.affectedRows > 0) {
       let id = insert.insertId;
       if(tags.length > 0) {
@@ -64,10 +61,63 @@ exports.addPost = async(ctx) => {
         let tagSql = updateTag.substring(0, updateTag.length -1);
         let insertTag = await ctx.execSql(tagSql);
       }
-      ctx.body = {
-        success: 1,
-        id: id
-      };
+      /*百度主动推送*/
+      let arr = [];
+      let data = {};
+      let systemUrl = await ctx.execSql(`select system.systemUrl from system`)
+      let postUrl = await ctx.execSql(`select post.id from post where status = 'PUBLISHED'`)
+      let categoryUrl = await ctx.execSql(` SELECT category.id, category.name, COUNT(post.id) AS count 
+                    FROM category LEFT JOIN post ON post.categoryId = category.id 
+                    WHERE post.status = 'PUBLISHED'
+                    GROUP BY category.id`)
+      let tagUrl = await ctx.execSql(`  SELECT tag.id, tag.name, COUNT(post.id) AS count FROM tag 
+                    LEFT JOIN post_tag ON tag.id = post_tag.tagId
+                    LEFT JOIN post ON post_tag.postId = post.id AND post.status = 'PUBLISHED'
+                    where post.status = 'PUBLISHED'
+                    GROUP BY tag.id`)
+      let baseUrl = systemUrl[0].systemUrl
+      let other = [
+        { id: 1, itemname: '实验室',url:'laboratory' },
+        { id: 2, itemname: '关于',url:'about' }
+      ]
+      data = {
+        baseUrl: baseUrl,
+        post: postUrl,
+        categoryUrl: categoryUrl,
+        tagUrl: tagUrl,
+        other: other
+      }
+      arr.push(data.baseUrl);
+      for(let i=0,length=data.post.length;i<length;i++){
+        arr.push(data.baseUrl + '/post/'+ data.post[i].id)
+      }
+      for(let i=0,length=data.categoryUrl.length;i<length;i++){
+        arr.push(data.baseUrl + '/search/category/'+ data.categoryUrl[i].id)
+      }
+      for(let i=0,length=data.tagUrl.length;i<length;i++){
+        arr.push(data.baseUrl + '/search/tag/'+ data.tagUrl[i].id)
+      }
+      for(let i=0,length=data.other.length;i<length;i++){
+        arr.push(data.baseUrl + '/' + data.other[i].url)
+      }
+      var bodyString = arr.join('\n');
+      let path = ' http://data.zz.baidu.com/urls?site=www.chengxinsong.cn&token=CuY4HYkx9GrCwdXc';
+      await fetch(path, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'text/plain '
+        },
+        body: bodyString
+      }).then(res => {
+        return res.json();
+      }).then(async(res) => {
+        ctx.body = {
+          success: 1,
+          message: '',
+          res: res,
+          id: id
+        };
+      })
     } else {
       ctx.body = {
         success: 0,
@@ -83,7 +133,7 @@ exports.addPost = async(ctx) => {
   }
 }
 
-/*发布文章*/
+/*修改-发布*/
 exports.updatePost = async(ctx) => {
   let id = ctx.params.id || 0,
       postData = ctx.request.body,
@@ -97,12 +147,8 @@ exports.updatePost = async(ctx) => {
         updateTime: moment().format('YYYY-MM-DD HH:mm:ss')
       };
   try {
-    /*获取文章url*/
     let status = 'PUBLISHED'
     let postUrl = await ctx.execSql(`select * from post where post.status = ${status}`)
-    console.log(postUrl, 'posturl11111111111111111111111111111111111')
-
-
     let result = await ctx.execSql('UPDATE post SET ? WHERE id = ?', [newPost, id]);
     let delResult = await ctx.execSql('DELETE FROM post_tag WHERE postId = ?', id);
     if(tags.length > 0) {
@@ -113,9 +159,62 @@ exports.updatePost = async(ctx) => {
       let tagSql = updateTag.substring(0, updateTag.length -1);
       let insertTag = await ctx.execSql(tagSql);
     }
-    ctx.body = {
-      success: 1
-    };
+    /*百度主动推送*/
+    let arr = [];
+    let data = {};
+    let systemUrl = await ctx.execSql(`select system.systemUrl from system`)
+    let postUrl = await ctx.execSql(`select post.id from post where status = 'PUBLISHED'`)
+    let categoryUrl = await ctx.execSql(` SELECT category.id, category.name, COUNT(post.id) AS count 
+                    FROM category LEFT JOIN post ON post.categoryId = category.id 
+                    WHERE post.status = 'PUBLISHED'
+                    GROUP BY category.id`)
+    let tagUrl = await ctx.execSql(`  SELECT tag.id, tag.name, COUNT(post.id) AS count FROM tag 
+                    LEFT JOIN post_tag ON tag.id = post_tag.tagId
+                    LEFT JOIN post ON post_tag.postId = post.id AND post.status = 'PUBLISHED'
+                    where post.status = 'PUBLISHED'
+                    GROUP BY tag.id`)
+    let baseUrl = systemUrl[0].systemUrl
+    let other = [
+      { id: 1, itemname: '实验室',url:'laboratory' },
+      { id: 2, itemname: '关于',url:'about' }
+    ]
+    data = {
+      baseUrl: baseUrl,
+      post: postUrl,
+      categoryUrl: categoryUrl,
+      tagUrl: tagUrl,
+      other: other
+    }
+    arr.push(data.baseUrl);
+    for(let i=0,length=data.post.length;i<length;i++){
+      arr.push(data.baseUrl + '/post/'+ data.post[i].id)
+    }
+    for(let i=0,length=data.categoryUrl.length;i<length;i++){
+      arr.push(data.baseUrl + '/search/category/'+ data.categoryUrl[i].id)
+    }
+    for(let i=0,length=data.tagUrl.length;i<length;i++){
+      arr.push(data.baseUrl + '/search/tag/'+ data.tagUrl[i].id)
+    }
+    for(let i=0,length=data.other.length;i<length;i++){
+      arr.push(data.baseUrl + '/' + data.other[i].url)
+    }
+    var bodyString = arr.join('\n');
+    let path = ' http://data.zz.baidu.com/urls?site=www.chengxinsong.cn&token=CuY4HYkx9GrCwdXc';
+    await fetch(path, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'text/plain '
+      },
+      body: bodyString
+    }).then(res => {
+      return res.json();
+    }).then(async(res) => {
+      ctx.body = {
+        success: 1,
+        message: '',
+        res: res
+      };
+    })
   } catch (error) {
     console.log(error);
     ctx.body = {
@@ -185,23 +284,67 @@ exports.offlinePost = async(ctx) => {
   }
 }
 
-/*列表发布*/
+/*列表-发布*/
 exports.publishPost = async(ctx) => {
   let id = ctx.params.id || 0;
   try {
     let results = await ctx.execSql(`UPDATE post SET status = 'PUBLISHED' WHERE id = ?`, id);
-    ctx.body = {
-      success: 1,
-      message: ''
-    };
-    /*获取文章url*/
+    /*百度主动推送*/
+    let arr = [];
+    let data = {};
+    let systemUrl = await ctx.execSql(`select system.systemUrl from system`)
     let postUrl = await ctx.execSql(`select post.id from post where status = 'PUBLISHED'`)
-    let postUrl = await ctx.execSql(`select post.id from post where status = 'PUBLISHED'`)
-    console.log(postUrl, 'posturl11111111111111111111111111111111111')
-    let baseUrl = ''
-
-
-
+    let categoryUrl = await ctx.execSql(` SELECT category.id, category.name, COUNT(post.id) AS count 
+                    FROM category LEFT JOIN post ON post.categoryId = category.id 
+                    WHERE post.status = 'PUBLISHED'
+                    GROUP BY category.id`)
+    let tagUrl = await ctx.execSql(`  SELECT tag.id, tag.name, COUNT(post.id) AS count FROM tag 
+                    LEFT JOIN post_tag ON tag.id = post_tag.tagId
+                    LEFT JOIN post ON post_tag.postId = post.id AND post.status = 'PUBLISHED'
+                    where post.status = 'PUBLISHED'
+                    GROUP BY tag.id`)
+    let baseUrl = systemUrl[0].systemUrl
+    let other = [
+      { id: 1, itemname: '实验室',url:'laboratory' },
+      { id: 2, itemname: '关于',url:'about' }
+    ]
+    data = {
+      baseUrl: baseUrl,
+      post: postUrl,
+      categoryUrl: categoryUrl,
+      tagUrl: tagUrl,
+      other: other
+    }
+    arr.push(data.baseUrl);
+    for(let i=0,length=data.post.length;i<length;i++){
+      arr.push(data.baseUrl + '/post/'+ data.post[i].id)
+    }
+    for(let i=0,length=data.categoryUrl.length;i<length;i++){
+      arr.push(data.baseUrl + '/search/category/'+ data.categoryUrl[i].id)
+    }
+    for(let i=0,length=data.tagUrl.length;i<length;i++){
+      arr.push(data.baseUrl + '/search/tag/'+ data.tagUrl[i].id)
+    }
+    for(let i=0,length=data.other.length;i<length;i++){
+      arr.push(data.baseUrl + '/' + data.other[i].url)
+    }
+    var bodyString = arr.join('\n');
+    let path = ' http://data.zz.baidu.com/urls?site=www.chengxinsong.cn&token=CuY4HYkx9GrCwdXc';
+    await fetch(path, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'text/plain '
+      },
+      body: bodyString
+    }).then(res => {
+      return res.json();
+    }).then(async(res) => {
+      ctx.body = {
+        success: 1,
+        message: '',
+        res: res
+      };
+    })
   } catch (error) {
     console.log(error);
     ctx.body = {
