@@ -1,9 +1,6 @@
 # songEagle-backManage
-songEagle-backManage是基于Vue.js + Node.js + Koa.js + MySQL + Redis + WebSocket的个人博客后台管理系统。
 
-~~目前线上地址：http://blog.mwcxs.top~~
-
-~~后续会更改，暂时使用~~
+一个支持服务端渲染SSR的博客，nuxt+vue+vuex+websocket+koa2+mysql+redis+nginx+jwt，包含文章，实验室，按照类别和标签分类，文章评论支持github第三方登录等，首页视觉可视化采用threejs+ WebGLRenderer实现网状波浪和三菱锥的动态效果。后台管理系统使用jwt做鉴权认证登录，支持markdown写文章，文章实时保存等功能。
 
 现在线上地址为：http://admin.chengxinsong.cn
 
